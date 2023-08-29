@@ -6,19 +6,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 
-#%matplotlib inline
+
 
 sns.set()
-#%matplotlib inline
-#Carregue para um DataFrame a lista de municípios de fronteira do Brasil utilizando o arquivo "arq_municipios_fronteiricos.csv".
-# Variavel contendo o nome do arquivo
-arquivo = "arq_municipios_fronteiricos.csv"
 
 # Complete o código abaixo para realizar a leitura do arquivo
 # o arquivo utiliza tabulação como separador
 # dentro de strings a tabulação é represen tada como \t
 
-df_muni_front = pd.read_csv(arquivo, dtype=str)
+df_muni_front = pd.read_csv('arq_municipios_fronteiricos.csv')
 # Visualize as 5 primeiras linhas do DataFrame
 print(df_muni_front.head(10))
 
@@ -52,7 +48,7 @@ print(df_muni_front.head(10))
 
 
 # verifique os tipos das colunas do DataFrame. Utilize o método info(): 
-df_muni_front df_muni_front.info()
+df_muni_front =  df_muni_front.info()
 
 # faça a conversão do campo 'Área territorial'
 def converter_para_float(texto):
@@ -77,11 +73,11 @@ df_muni_front.loc[:, 'Área territorial'] = area_territorial
 df_muni_front.loc[:, 'PIB (IBGE/2005'] = pib
 
 # imprima novamente as informações das colunas e verifique os tipos 
-Print(df_muni_front.info() )
+print(df_muni_front.info() )
 
 
 # imprima novamente as primeiras linhas do DataFrame 
-Print(df_muni_front.head(60)) 
+print(df_muni_front.head(60)) 
 
 # crie o set e verifique o seu conteúdo
 nomes_estados = set(df_muni_front['Estado'])
@@ -114,7 +110,7 @@ print(coluna_siglas_uf.head(10))
 df_muni_front['Sigla'] = coluna_siglas_uf 
 
 # verifique as informações do dataframe 
-Print(df_muni_front.head())
+print(df_muni_front.head())
 
 # verifique quantos registros possuem o nome do estado de Santa Catarina escrito errado "Santa Cataria"
 print(len(df_muni_front.loc[df_muni_front['Estado'] == 'Santa Cataria']))
