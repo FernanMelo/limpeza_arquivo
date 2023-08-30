@@ -8,8 +8,8 @@
  1º Aula: Pre-processamento: fazer uma limpeza/filtrar o seu dataset um arquivo .CSV e depois instalando o versionador de de bibliotecas pip "sudo apt install python3 pip"
  pip install "nome_biblioteca"
 
-numpy as np
-pandas as pd
-import re 
-matplotlib.pyplot as plt
-seaborn as sns
+numpy /n
+pandas /n
+import re /n
+matplotlib.pyplot /n
+seaborn /n
