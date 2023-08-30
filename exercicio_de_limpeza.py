@@ -48,19 +48,21 @@ print(df_muni_front.head(10))
 
 
 # verifique os tipos das colunas do DataFrame. Utilize o método info(): 
-df_muni_front =  df_muni_front.info()
-
-# faça a conversão do campo 'Área territorial'
+df_muni_front.info()
+         
 def converter_para_float(texto):
-    # faça as operações necessárias e 
-    # devolva um objeto do tipo float
-    # ou np.NaN (tipo Not a Number do numpy)
-    t = texto.replace(' ','').replace('.','').replace(',','.');
-    return float(t)
+        numero_float = float(texto)
+        return numero_float
+
+def converter_pib(texto):
+    textoSemPonto = texto.replace('.', '').replace(' ','')
+    numeroFloat = float(textoSemPonto)
+    return numeroFloat
+
 
 # aplique a função de conversão utilizando o método apply na coluna 'Área territorial'
 area_territorial = df_muni_front['Área territorial'].apply(converter_para_float)
-pib = df_muni_front['PIB (IBGE/2005'].apply(converter_para_float)
+pib = df_muni_front['PIB (IBGE/2005'].apply(converter_pib)
 
 # exiba alguns valores da com valores convertidos
 print(area_territorial.head())
@@ -69,9 +71,9 @@ print(pib.head())
 # substitua a coluna pelos valores convertidos
 df_muni_front.loc[:, 'Área territorial'] = area_territorial
 
+
 # faça o mesmo para a coluna PIB
 df_muni_front.loc[:, 'PIB (IBGE/2005'] = pib
-
 # imprima novamente as informações das colunas e verifique os tipos 
 print(df_muni_front.info() )
 
@@ -126,8 +128,8 @@ print(len(df_muni_front.loc[df_muni_front['Estado'] == 'Santa Cataria']))
 pib_desvios = df_muni_front['PIB (IBGE/2005'].apply(lambda x: (x - df_muni_front['PIB (IBGE/2005'].mean())/df_muni_front['PIB (IBGE/2005'].std())
 
 # exiba um histograma para as informações de PIB normalizado
-plt.figure(figsize=(15,6))
-sns.distplot(pib_desvios.dropna(), bins=50)
+plt.figure(figsize=(120,20))
+sns.distplot(pib_desvios.dropna(), bins=20)
 plt.xlabel('PIB (Quantidade de Desvios)')
 plt.ylabel('Frequência')
 plt.show()
@@ -141,7 +143,6 @@ print(df_muni_front.Sigla.value_counts())
 
 # faça a ordenação do DataFrame pelo nome do município
 print(df_muni_front.sort_values(by=['Município']))
-
 # a ordenação está correta?
 
 
